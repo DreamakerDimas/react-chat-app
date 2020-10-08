@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { userContext } from '../../context/userContext';
 import styles from './Auth.module.scss';
 
 const Registration = () => {
+  const auth = useContext(userContext);
+
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -9,8 +12,25 @@ const Registration = () => {
     password: '',
   });
 
-  const registrationHandler = async () => {
+  const registrationHandler = async (event) => {
+    event.preventDefault();
     try {
+      await fetch('/api/auth/register', {
+        method: 'POST',
+        body: JSON.stringify(form),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          const { id, firstName, lastName } = data.dataValues;
+          auth.setUserId(id);
+          auth.setUserName(`${firstName} ${lastName}`);
+          auth.setAuth(true);
+        });
     } catch (e) {}
   };
 
@@ -75,7 +95,9 @@ const Registration = () => {
       </div>
 
       <div className={styles.actionCard}>
-        <button className={styles.authButton}>Sign Up</button>
+        <button className={styles.authButton} onClick={registrationHandler}>
+          Sign Up
+        </button>
       </div>
     </div>
   );

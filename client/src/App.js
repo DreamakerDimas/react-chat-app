@@ -5,16 +5,24 @@ import { useRoutes } from './routes';
 import { userContext } from './context/userContext';
 
 function App() {
-  const routes = useRoutes();
+  const [userId, setUserId] = useState(null);
   const [userName, setUserName] = useState('');
-  const [isAuthenticated, setAuth] = useState(false); // !!!
+  const [isAuthenticated, setAuth] = useState(false); // !!! need token
+  const routes = useRoutes(isAuthenticated);
 
   return (
     <userContext.Provider
-      value={{ userName, isAuthenticated, setUserName, setAuth }}
+      value={{
+        userId,
+        userName,
+        isAuthenticated,
+        setUserId,
+        setUserName,
+        setAuth,
+      }}
     >
       <Router>
-        <Navbar />
+        {isAuthenticated && <Navbar />}
         <div>{routes}</div>
       </Router>
     </userContext.Provider>

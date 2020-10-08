@@ -1,13 +1,16 @@
 const express = require('express');
 const UserController = require('./controllers/UserController');
 
-const PORT = process.env.NODE_PORT || 3000;
+const PORT = process.env.NODE_PORT || 4000;
 
-const app = express();
+const app = express({ extended: true });
 
 app.use(express.json());
 
-// создание нового пользователя
+// authorization
 app.use('/api/auth', require('./routes/auth.routes'));
+
+// chat
+app.use('/api/chat', require('./routes/chat.routes'));
 
 app.listen(PORT, () => console.log(`App listening on ${PORT} port!`));

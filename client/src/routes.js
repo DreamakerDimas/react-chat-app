@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { userContext } from './context/userContext';
 import AuthPage from './Pages/AuthPage';
 import ChatPage from './Pages/ChatPage';
 
-export const useRoutes = () => {
-  // !!!!!!
-  if (false) {
+export const useRoutes = (isAuthenticated) => {
+  if (isAuthenticated) {
     return (
       <Switch>
         <Route path="/chat" exact>
           <ChatPage />
         </Route>
+        <Redirect to="/chat" />
       </Switch>
     );
   }

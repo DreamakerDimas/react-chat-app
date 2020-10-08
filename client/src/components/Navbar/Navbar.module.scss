@@ -14,8 +14,20 @@
   color: aliceblue;
 }
 
+.navbarName {
+  margin: 0 15px;
+  color: aliceblue;
+  border: solid 1px aliceblue;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
 .navbarElem {
   text-decoration: none;
   margin: 0 15px;
   color: aliceblue;
+}
+
+.navbarElem:hover {
+  cursor: pointer;
 }

@@ -14,14 +14,16 @@ router.post('/register', validateUser, async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const createdUser = User.create({
+
+    const createdUser = await User.create({
       firstName,
       lastName,
       email,
       password: hashedPassword,
     });
+    delete createdUser.password;
     if (createdUser) {
-      return res.status(201).send(createdUser);
+      res.json({ ...createdUser });
     }
   } catch (e) {
     res.status(500).json({ message: 'Internal server error' });
@@ -30,6 +32,7 @@ router.post('/register', validateUser, async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
+    console.log(req.body);
     const { email, password } = req.body;
 
     const foundUser = await User.findOne({ where: { email } });
@@ -44,8 +47,10 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Wrong password' });
     }
 
-    res.json({ foundUser });
+    res.json({ ...foundUser });
   } catch (e) {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+module.exports = router;
