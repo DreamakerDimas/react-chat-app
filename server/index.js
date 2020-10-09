@@ -1,5 +1,4 @@
 const express = require('express');
-const UserController = require('./controllers/UserController');
 
 const PORT = process.env.NODE_PORT || 4000;
 
