@@ -1,0 +1,60 @@
+.chatContainer {
+  box-sizing: border-box;
+  max-width: 80%;
+  min-width: 300px;
+  min-height: 400px;
+  max-height: 90%;
+  height: 1px;
+  margin: 20px auto;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid rgb(40, 64, 204);
+  background-color: rgb(103, 173, 201);
+  border-radius: 10px;
+}
+
+.messagesContainer {
+  margin: 10px;
+  width: 90%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  border: 1px solid rgb(76, 0, 255);
+  background-color: azure;
+  border-radius: 1px;
+  overflow-y: scroll;
+}
+
+.inputContainer {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.inputElem {
+  color: rgb(73, 58, 153);
+  font-size: 18px;
+  margin: 0 5px;
+  padding: 5px;
+  flex-grow: 2;
+  border: 1px solid rgb(73, 58, 153);
+  border-radius: 5px;
+}
+
+.sendMessage {
+  box-sizing: border-box;
+  color: aliceblue;
+  background-color: rgb(73, 58, 153);
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  margin: 0 5px;
+  font-size: 18px;
+  padding: 5px;
+}

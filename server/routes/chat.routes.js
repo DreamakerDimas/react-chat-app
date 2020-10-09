@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
       userId,
     });
     if (createdMessage) {
-      res.status(201).send('Message created');
+      return res.status(201).send('Message created');
     }
     throw new Error();
   } catch (e) {
@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
     });
 
     if (chat) {
-      res.json({ chat });
+      return res.status(200).json([ ...chat ]);
     }
     throw new Error();
   } catch (e) {

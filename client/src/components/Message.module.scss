@@ -1,0 +1,28 @@
+.messageContainer {
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgb(44, 44, 192);
+  border-radius: 5px;
+}
+
+.myMessage {
+  background-color: rgb(73, 58, 153);
+}
+
+.messageSender {
+  font-size: 15px;
+  font-weight: 700;
+  font-style: italic;
+  color: rgb(203, 252, 248);
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.messageData {
+  margin: 0 20px 10px;
+  color: rgb(255, 240, 240);
+}

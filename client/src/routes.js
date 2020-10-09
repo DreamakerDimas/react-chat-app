@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { userContext } from './context/userContext';
 import AuthPage from './Pages/AuthPage';
 import ChatPage from './Pages/ChatPage';
 
